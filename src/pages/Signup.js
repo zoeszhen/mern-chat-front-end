@@ -4,7 +4,7 @@ import {
   Button, Form, Container, Col, Row,
 } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-
+import { useSignupMutation } from '../services/appApi';
 import './Signup.css';
 import botImg from '../assets/bot.jpg';
 
@@ -12,6 +12,7 @@ function Signup() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
+  const [singupUser, { isLoading, error }] = useSignupMutation();
 
   // image state
   const [image, setImage] = useState(null);
@@ -45,10 +46,10 @@ function Signup() {
       const urlData = await res.json();
 
       setUploadingImage(false);
-      return urlData;
-    } catch (error) {
+      return urlData.url;
+    } catch (e) {
       setUploadingImage(false);
-      console.log(error);
+      console.log(e);
     }
   };
 
@@ -58,7 +59,14 @@ function Signup() {
     if (!image) {
       return alert('Pleae upload your profile image');
     }
+    console.log('name, email, password', name, email, password);
     const url = await uploadImage(image);
+    console.log('url', url);
+    singupUser({
+      name, email, password, picture: url,
+    }).then((data) => {
+      console.log('data', data);
+    });
     console.log(url);
   };
 
@@ -120,7 +128,7 @@ function Signup() {
               />
             </Form.Group>
             <Button variant="primary" type="submit">
-              {uploadImage ? 'Signing you up...' : 'Signup'}
+              {uploadingImage ? 'Signing you up...' : 'Signup'}
             </Button>
             <div className="py-4">
               <p className="text-center">
