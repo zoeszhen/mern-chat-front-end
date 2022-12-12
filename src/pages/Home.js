@@ -1,9 +1,9 @@
-import React from "react";
-import { Row, Col, Button } from "react-bootstrap";
-import { LinkContainer } from "react-router-bootstrap";
-import "./Home.css";
+import React from 'react';
+import { Row, Col, Button } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
+import './Home.css';
 
-const Home = () => {
+function Home() {
   return (
     <Row>
       <Col
@@ -15,14 +15,16 @@ const Home = () => {
           <p> Chat App let you connect with the world</p>
           <LinkContainer to="/chat">
             <Button variant="success">
-              Get start <i className="fas fa-comments home-message-icon"></i>
+              Get start
+              {' '}
+              <i className="fas fa-comments home-message-icon" />
             </Button>
           </LinkContainer>
         </div>
       </Col>
-      <Col md={6} className="home__bg"></Col>
+      <Col md={6} className="home__bg" />
     </Row>
   );
-};
+}
 
 export default Home;

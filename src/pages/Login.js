@@ -1,11 +1,13 @@
-import React, { useState } from "react";
-import { Button, Form, Container, Col, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import "./Login.css";
+import React, { useState } from 'react';
+import {
+  Button, Form, Container, Col, Row,
+} from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import './Login.css';
 
-const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+function Login() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -14,12 +16,12 @@ const Login = () => {
   return (
     <Container>
       <Row>
-        <Col md={5} className="login__bg"></Col>
+        <Col md={5} className="login__bg" />
         <Col
           md={7}
           className="d-flex align-items-center justify-content-center flex-direction-column"
         >
-          <Form style={{ width: "80%", maxWidth: 500 }} onSubmit={handleLogin}>
+          <Form style={{ width: '80%', maxWidth: 500 }} onSubmit={handleLogin}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Email address</Form.Label>
               <Form.Control
@@ -30,7 +32,7 @@ const Login = () => {
                 required
               />
               <Form.Text className="text-muted">
-                We'll never share your email with anyone else.
+                Well never share your email with anyone else.
               </Form.Text>
             </Form.Group>
 
@@ -49,7 +51,9 @@ const Login = () => {
             </Button>
             <div className="py-4">
               <p className="text-center">
-                Dont have account ? <Link to="/signup">Signup</Link>
+                Dont have account ?
+                {' '}
+                <Link to="/signup">Signup</Link>
               </p>
             </div>
           </Form>
@@ -57,6 +61,6 @@ const Login = () => {
       </Row>
     </Container>
   );
-};
+}
 
 export default Login;

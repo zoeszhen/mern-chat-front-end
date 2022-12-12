@@ -8,7 +8,7 @@ function Sidebar() {
       <h2>Avalible rooms</h2>
       <ListGroup>
         {rooms.map((room) => (
-          <ListGroup.Item key={room}>room</ListGroup.Item>
+          <ListGroup.Item key={room}>{room}</ListGroup.Item>
         ))}
       </ListGroup>
       <h2>Memembers</h2>
